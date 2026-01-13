@@ -35,14 +35,21 @@ Ayrıca içerdiği **Banner Grabbing** (Servis Bilgisi Toplama) özelliği sayes
 🛡️ WAF Tespiti: Hedef sistemde Cloudflare, ModSecurity gibi Güvenlik Duvarı (WAF) olup olmadığını analiz eder.
 
 🔒 Gelişmiş SSL/TLS Analizi:
+
 SNI (Server Name Indication) desteği ile sanal hostları doğru analiz eder.
+
 Sertifika otoritesini (Issuer) ve geçerlilik süresini (Expiry Date) UTC uyumlu olarak hesaplar.
+
 Güvensiz/Self-Signed sertifikaları tespit eder.
 
 🐛 Zafiyet Modülleri (Mini-NSE):
+
 FTP: Anonim giriş (Anonymous Login) kontrolü.
+
 HTTP: robots.txt dosyası üzerinden bilgi ifşası (Information Disclosure) kontrolü.
+
 SMTP: VRFY komutu ile kullanıcı numaralandırma (User Enumeration) açığı kontrolü.
+
 Banner Grabbing: Servis versiyonlarını ve işletim sistemi ipuçlarını yakalar.
 
 📊 Raporlama: Sonuçları detaylı bir JSON dosyasına kaydeder.
