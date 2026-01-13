@@ -1,3 +1,17 @@
+Proje Hakkında
+
+**PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
+
+Geleneksel soket programlamanın limitlerini aşmak için **Multi-Threading (Çoklu İş Parçacığı)** mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
+
+Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightweight) çözümlerin gerektiği kısıtlı ortamlarda (Pivot noktaları, Docker konteynerleri vb.) hızlı keşif yapmak amacıyla geliştirilmiştir.
+
+## 🚀 <a name="features"></a>Temel Özellikler
+
+* **Eşzamanlı Tarama Motoru (Concurrency):** `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu (ThreadPool) yönetimi.
+* **Servis Parmak İzi (Service Fingerprinting):** Açık portlarda çalışan servislerin (SSH, FTP, HTTP vb.) "Banner" bilgilerini yakalayarak versiyon tespiti yapar.
+* **Düşük Yanlış Pozitif (Low False Positive):** Ağ gecikmelerini ve zaman aşımlarını (timeouts) dinamik olarak yöneten soket yapılandırması.
+* **Platform Bağımsız:** Python 3.x yüklü olan tüm işletim sistemlerinde (Windows, Linux, macOS) ek yetki gerektirmeden çalışır.
 Kurulum
 Projeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:
 
