@@ -85,7 +85,7 @@ Bashpython Scanner.py -t <HEDEF_IP>
 ```
 ✅Örnek Senaryo: 
 ```text
-python Scanner.py -t google.com veya python Scanner.py -t 192.168.1.1
+python Scanner.py -t google.com veya python Scanner.py -t 1.1.1.1
 ```
 2. Raporlu Tarama (JSON Çıktısı)
 Sonuçları kaydetmek için -o parametresini kullanın:
