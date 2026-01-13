@@ -38,7 +38,7 @@ Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightw
 
 ## 📂 Proje Yapısı
 
-```text
+text
 PortScanner/
 ├── Scanner.py          # Ana tarama motoru ve iş mantığı
 ├── requirements.txt    # Proje bağımlılıkları
