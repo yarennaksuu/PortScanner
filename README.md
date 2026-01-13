@@ -22,80 +22,79 @@
 
 ## 📌 <a name="about"></a>Proje Hakkında
 
-**PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
+**PortScanner**, siber güvenlik uzmanları ve sistem yöneticileri için geliştirilmiş; hafif, hızlı ve çok iş parçacıklı (multi-threaded) bir ağ tarama aracıdır. Standart tek iş parçacıklı tarayıcıların aksine, PortScanner **Python'un eşzamanlılık (concurrency)** yeteneklerini kullanarak yaygın portları saniyeler içinde tarar. Standart port taramasının ötesine geçerek hedef sistem hakkında SSL Analizi, WAF Tespiti ve Kritik Zafiyet Kontrolleri yapar.
 
-Geleneksel soket programlamanın limitlerini aşmak için **Multi-Threading (Çoklu İş Parçacığı)** mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
+Ayrıca içerdiği **Banner Grabbing** (Servis Bilgisi Toplama) özelliği sayesinde, açık portlarda çalışan servislerin versiyon bilgilerini (örneğin: SSH versiyonu, Apache sunucu bilgisi vb.) otomatik olarak tespit eder. Bu özellik, sızma testlerinin keşif (reconnaissance) aşamasında kritik öneme sahiptir.
 
-Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightweight) çözümlerin gerektiği kısıtlı ortamlarda (Pivot noktaları, Docker konteynerleri vb.) hızlı keşif yapmak amacıyla geliştirilmiştir.
-
-## 🚀 <a name="features"></a>Temel Özellikler
-
-* **Eşzamanlı Tarama Motoru (Concurrency):** `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu (ThreadPool) yönetimi.
-* **Servis Parmak İzi (Service Fingerprinting):** Açık portlarda çalışan servislerin (SSH, FTP, HTTP vb.) "Banner" bilgilerini yakalayarak versiyon tespiti yapar.
-* **Düşük Yanlış Pozitif (Low False Positive):** Ağ gecikmelerini ve zaman aşımlarını (timeouts) dinamik olarak yöneten soket yapılandırması.
-* **Platform Bağımsız:** Python 3.x yüklü olan tüm işletim sistemlerinde (Windows, Linux, macOS) ek yetki gerektirmeden çalışır.
-* **Renkli CLI Arayüzü:** `Colorama` entegrasyonu ile analiz edilmesi kolay, renk kodlu terminal çıktıları.
-
+## 🚀 Özellikler
+⚡ Yüksek Hız: Concurrent.futures kullanarak çoklu iş parçacığı (multi-threading) ile saniyeler içinde binlerce portu tarar.
+🔍 Akıllı Hedef Çözümleme: Domain adreslerini (örn: google.com) otomatik olarak IP adresine çevirir ve tarar. CIDR desteği (örn: 192.168.1.0/24) mevcuttur.
+🛡️ WAF Tespiti: Hedef sistemde Cloudflare, ModSecurity gibi Güvenlik Duvarı (WAF) olup olmadığını analiz eder.
+🔒 Gelişmiş SSL/TLS Analizi:
+SNI (Server Name Indication) desteği ile sanal hostları doğru analiz eder.
+Sertifika otoritesini (Issuer) ve geçerlilik süresini (Expiry Date) UTC uyumlu olarak hesaplar.
+Güvensiz/Self-Signed sertifikaları tespit eder.
+🐛 Zafiyet Modülleri (Mini-NSE):
+FTP: Anonim giriş (Anonymous Login) kontrolü.
+HTTP: robots.txt dosyası üzerinden bilgi ifşası (Information Disclosure) kontrolü.
+SMTP: VRFY komutu ile kullanıcı numaralandırma (User Enumeration) açığı kontrolü.
+Banner Grabbing: Servis versiyonlarını ve işletim sistemi ipuçlarını yakalar.
+📊 Raporlama: Sonuçları detaylı bir JSON dosyasına kaydeder.
+🎨 Kullanıcı Deneyimi: Renkli terminal çıktıları (colorama) ve ilerleme çubuğu (tqdm).
 ## 📂 Proje Yapısı
 
 ```text
 PortScanner/
-├── Scanner.py          # Ana tarama motoru ve iş mantığı
-├── requirements.txt    # Proje bağımlılıkları
+├── Scanner.py          # Ana tarama motoru
+├── requirements.txt    # Kütüphaneler
 ├── README.md           # Dokümantasyon
-└── .gitignore          # Git tarafından izlenmeyecek dosyalar
+└── .gitignore          # Git ayarları
 ```
-##⚙️ <a name="installation"></a>Kurulum
-Projeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:
+## ⚙️ <a name="installation"></a>Kurulum
+Projeyi kurmak için şu adımları izleyin:
 ```text
+Bash# 1. Repoyu klonlayın
+git clone [https://github.com/yarennaksuu/PortScanner.git](https://github.com/yarennaksuu/PortScanner.git)
 
-# 1. Repoyu klonlayın
-git clone https://github.com/yarennaksuu/PortScanner.git
-
-# 2. Proje dizinine geçiş yapın
+# 2. Klasöre girin
 cd PortScanner
 
-# 3. Gerekli kütüphaneleri yükleyin
+# 3. Kütüphaneyi yükleyin
 pip install -r requirements.txt
 ```
-##💻 <a name="usage"></a>KullanımPortScanner
+## 💻 <a name="usage"></a>Kullanım
 
-komut satırı argümanları ile yönetilir.
+1. Basit Tarama (Domain veya IP)
 ```text
-
-Sözdizimi: Bashpython Scanner.py -t <HEDEF_IP>
-
+Bashpython Scanner.py -t <HEDEF_IP>
 ```
-
-✅Örnek Senaryo: Bir hedef üzerindeki servisleri ve versiyonları tespit etmek için:   python Scanner.py -t scanme.nmap.org
+✅Örnek Senaryo: 
 ```text
-Beklenen Çıktı:Plaintext------------------------------------------------------------
-[*] Scanning Target: 45.33.32.156
-[*] Scanning ports 1-1000 with 100 threads...
-[*] Start Time: 2026-01-13 16:45:12
-------------------------------------------------------------
-[+] Port 22    (ssh) OPEN : SSH-2.0-OpenSSH_7.4
-[+] Port 80    (http) is OPEN
-[+] Port 9929  (nping-echo) is OPEN
-------------------------------------------------------------
-[*] Scan Completed: 2026-01-13 16:45:22
+python Scanner.py -t google.com veya python Scanner.py -t 192.168.1.1
 ```
-⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)
-Lütfen Dikkatle Okuyunuz:
-
+2. Raporlu Tarama (JSON Çıktısı)
+Sonuçları kaydetmek için -o parametresini kullanın:
+```text
+python Scanner.py -t scanme.nmap.org -o rapor.json
+```
+Beklenen Çıktı:
+```text
+[*] Domain resolved: google.com -> 142.250.187.174
+------------------------------------------------------------
+[*] Target: google.com
+[*] Features: Port Scan, SSL SNI Analysis, WAF Detect, Vuln Check
+------------------------------------------------------------
+[+] 142.250.187.174:80    (http) OPEN [i] robots.txt found (Info Disclosure)
+[+] 142.250.187.174:443   (https) OPEN [SSL: *.google.com | Issuer: Google Trust Services | Expires: 42 days]
+Scanning: 100%|██████████████████████████████| 1000/1000
+```
+## ⚠️ <a name="disclaimer"></a>Yasal Uyarı
 Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
 
 İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.
 
-Geliştirici (Yaren Aksu), bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.
+Geliştirici, bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.
 
 Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.
 
-<div align="center">
-
-Geliştirici: Yaren Aksu
-
-
-Cybersecurity Researcher & Developer
-
-</div>
+<div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
