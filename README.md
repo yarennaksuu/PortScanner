@@ -59,10 +59,16 @@ cd PortScanner
 pip install -r requirements.txt
 ```
 ##💻 <a name="usage"></a>KullanımPortScanner
+
 komut satırı argümanları ile yönetilir.
+```text
+
 Sözdizimi: Bashpython Scanner.py -t <HEDEF_IP>
 Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi veya Hostname
+```
+
 ✅Örnek SenaryoBir hedef üzerindeki servisleri ve versiyonları tespit etmek için:   Bashpython Scanner.py -t scanme.nmap.org
+```text
 Beklenen Çıktı:Plaintext------------------------------------------------------------
 [*] Scanning Target: 45.33.32.156
 [*] Scanning ports 1-1000 with 100 threads...
@@ -73,3 +79,4 @@ Beklenen Çıktı:Plaintext-----------------------------------------------------
 [+] Port 9929  (nping-echo) is OPEN
 ------------------------------------------------------------
 [*] Scan Completed: 2026-01-13 16:45:22
+```
