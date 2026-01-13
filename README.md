@@ -22,17 +22,16 @@
 
 ## 📌 <a name="about"></a>Proje Hakkında
 
-**PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
+**PortScanner**, siber güvenlik uzmanları ve sistem yöneticileri için geliştirilmiş; hafif, hızlı ve çok iş parçacıklı (multi-threaded) bir ağ tarama aracıdır. Standart tek iş parçacıklı tarayıcıların aksine, PortScanner **Python'un eşzamanlılık (concurrency)** yeteneklerini kullanarak yaygın portları saniyeler içinde tarar.
 
-Geleneksel soket programlamanın limitlerini aşmak için **Multi-Threading (Çoklu İş Parçacığı)** mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
+Ayrıca içerdiği **Banner Grabbing** (Servis Bilgisi Toplama) özelliği sayesinde, açık portlarda çalışan servislerin versiyon bilgilerini (örneğin: SSH versiyonu, Apache sunucu bilgisi vb.) otomatik olarak tespit eder. Bu özellik, sızma testlerinin keşif (reconnaissance) aşamasında kritik öneme sahiptir.
 
-## 🚀 <a name="features"></a>Temel Özellikler
-
-* **Eşzamanlı Tarama Motoru:** `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu.
-* **Servis Parmak İzi:** Açık portlarda çalışan servislerin versiyon tespiti.
-* **Düşük Yanlış Pozitif:** Optimize edilmiş soket zaman aşımı yönetimi.
-* **Platform Bağımsız:** Windows, Linux ve macOS üzerinde çalışır.
-* **Renkli Arayüz:** `Colorama` ile okunabilir terminal çıktıları.
+## 🚀 Özellikler
+* **Yüksek Hız (Multi-Threading):** 100 eşzamanlı iş parçacığı (thread) kullanarak 1000 portu yaklaşık 10 saniyede tarar.
+* **Banner Grabbing:** Açık portlardaki servislerin versiyon bilgilerini ve karşılama mesajlarını yakalar.
+* **Akıllı Zaman Aşımı:** Filtrelenmiş veya cevap vermeyen portlarda vakit kaybetmemek için optimize edilmiş soket yönetimi.
+* **Renkli Arayüz:** Sonuçları analiz etmeyi kolaylaştıran, okunaklı ve renkli komut satırı çıktıları.
+* **Bağımlılıksız:** Çalışmak için ağır kütüphanelere ihtiyaç duymaz.
 
 ## 📂 Proje Yapısı
 
