@@ -80,3 +80,22 @@ Beklenen Çıktı:Plaintext-----------------------------------------------------
 ------------------------------------------------------------
 [*] Scan Completed: 2026-01-13 16:45:22
 ```
+⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)
+Lütfen Dikkatle Okuyunuz:
+
+Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
+
+İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.
+
+Geliştirici (Yaren Aksu), bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.
+
+Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.
+
+<div align="center">
+
+Geliştirici: Yaren Aksu
+
+
+Cybersecurity Researcher & Developer
+
+</div>
