@@ -22,17 +22,25 @@
 
 ## 📌 <a name="about"></a>Proje Hakkında
 
-**PortScanner**, siber güvenlik uzmanları ve sistem yöneticileri için geliştirilmiş; hafif, hızlı ve çok iş parçacıklı (multi-threaded) bir ağ tarama aracıdır. Standart tek iş parçacıklı tarayıcıların aksine, PortScanner **Python'un eşzamanlılık (concurrency)** yeteneklerini kullanarak yaygın portları saniyeler içinde tarar.
+**PortScanner**, siber güvenlik uzmanları ve sistem yöneticileri için geliştirilmiş; hafif, hızlı ve çok iş parçacıklı (multi-threaded) bir ağ tarama aracıdır. Standart tek iş parçacıklı tarayıcıların aksine, PortScanner **Python'un eşzamanlılık (concurrency)** yeteneklerini kullanarak yaygın portları saniyeler içinde tarar. Standart port taramasının ötesine geçerek hedef sistem hakkında SSL Analizi, WAF Tespiti ve Kritik Zafiyet Kontrolleri yapar.
 
 Ayrıca içerdiği **Banner Grabbing** (Servis Bilgisi Toplama) özelliği sayesinde, açık portlarda çalışan servislerin versiyon bilgilerini (örneğin: SSH versiyonu, Apache sunucu bilgisi vb.) otomatik olarak tespit eder. Bu özellik, sızma testlerinin keşif (reconnaissance) aşamasında kritik öneme sahiptir.
 
 ## 🚀 Özellikler
-* **Yüksek Hız (Multi-Threading):** 100 eşzamanlı iş parçacığı (thread) kullanarak 1000 portu yaklaşık 10 saniyede tarar.
-* **Banner Grabbing:** Açık portlardaki servislerin versiyon bilgilerini ve karşılama mesajlarını yakalar.
-* **Akıllı Zaman Aşımı:** Filtrelenmiş veya cevap vermeyen portlarda vakit kaybetmemek için optimize edilmiş soket yönetimi.
-* **Renkli Arayüz:** Sonuçları analiz etmeyi kolaylaştıran, okunaklı ve renkli komut satırı çıktıları.
-* **Bağımlılıksız:** Çalışmak için ağır kütüphanelere ihtiyaç duymaz.
-
+⚡ Yüksek Hız: Concurrent.futures kullanarak çoklu iş parçacığı (multi-threading) ile saniyeler içinde binlerce portu tarar.
+🔍 Akıllı Hedef Çözümleme: Domain adreslerini (örn: google.com) otomatik olarak IP adresine çevirir ve tarar. CIDR desteği (örn: 192.168.1.0/24) mevcuttur.
+🛡️ WAF Tespiti: Hedef sistemde Cloudflare, ModSecurity gibi Güvenlik Duvarı (WAF) olup olmadığını analiz eder.
+🔒 Gelişmiş SSL/TLS Analizi:
+SNI (Server Name Indication) desteği ile sanal hostları doğru analiz eder.
+Sertifika otoritesini (Issuer) ve geçerlilik süresini (Expiry Date) UTC uyumlu olarak hesaplar.
+Güvensiz/Self-Signed sertifikaları tespit eder.
+🐛 Zafiyet Modülleri (Mini-NSE):
+FTP: Anonim giriş (Anonymous Login) kontrolü.
+HTTP: robots.txt dosyası üzerinden bilgi ifşası (Information Disclosure) kontrolü.
+SMTP: VRFY komutu ile kullanıcı numaralandırma (User Enumeration) açığı kontrolü.
+Banner Grabbing: Servis versiyonlarını ve işletim sistemi ipuçlarını yakalar.
+📊 Raporlama: Sonuçları detaylı bir JSON dosyasına kaydeder.
+🎨 Kullanıcı Deneyimi: Renkli terminal çıktıları (colorama) ve ilerleme çubuğu (tqdm).
 ## 📂 Proje Yapısı
 
 ```text
@@ -56,23 +64,29 @@ pip install -r requirements.txt
 ```
 ## 💻 <a name="usage"></a>Kullanım
 
-Taramayı başlatmak için -t parametresini kullanın.Komut:
+1. Basit Tarama (Domain veya IP)
 ```text
 Bashpython Scanner.py -t <HEDEF_IP>
 ```
 ✅Örnek Senaryo: 
 ```text
-python Scanner.py -t scanme.nmap.org
+python Scanner.py -t google.com veya python Scanner.py -t 192.168.1.1
+```
+2. Raporlu Tarama (JSON Çıktısı)
+Sonuçları kaydetmek için -o parametresini kullanın:
+```text
+python Scanner.py -t scanme.nmap.org -o rapor.json
 ```
 Beklenen Çıktı:
 ```text
-Plaintext------------------------------------------------------------
-[*] Scanning Target: 45.33.32.156
-[*] Scanning ports 1-1000 with 100 threads...
+[*] Domain resolved: google.com -> 142.250.187.174
 ------------------------------------------------------------
-[+] Port 22    (ssh) OPEN : SSH-2.0-OpenSSH_7.4
-[+] Port 80    (http) is OPEN
+[*] Target: google.com
+[*] Features: Port Scan, SSL SNI Analysis, WAF Detect, Vuln Check
 ------------------------------------------------------------
+[+] 142.250.187.174:80    (http) OPEN [i] robots.txt found (Info Disclosure)
+[+] 142.250.187.174:443   (https) OPEN [SSL: *.google.com | Issuer: Google Trust Services | Expires: 42 days]
+Scanning: 100%|██████████████████████████████| 1000/1000
 ```
 ## ⚠️ <a name="disclaimer"></a>Yasal Uyarı
 Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
