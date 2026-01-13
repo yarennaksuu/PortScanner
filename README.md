@@ -1,4 +1,4 @@
-<div align="center">
+Gönderdiğin ekran görüntülerini inceledim. Sorunu ve nedenini hemen tespit ettim.Teşhis: "Proje Yapısı" başlığının altındaki kod bloğunu kapatmamışsın.Ekran görüntüsünde her şeyin (Kurulum, Kullanım, Yasal Uyarı) gri bir kutu içinde ve kod formatında görünmesinin sebebi bu. GitHub, "Proje Yapısı"ndan sonra gelen her şeyi kodun bir parçası sanıyor. O yüzden başlıklar kalınlaşmıyor, tablolar bozuluyor ve HTML kodları (<a name...) olduğu gibi görünüyor.🛠️ Çözüm: Temiz Başlangıç (Copy-Paste)Lütfen README.md dosyanın içindeki her şeyi sil. Aşağıdaki kodu baştan sona kopyala ve yapıştır. Bu kodda tüm "kapatma tırnakları" (```) olması gerektiği yerde.Markdown<div align="center">
 
 # PortScanner 🛡️
 ### Network Reconnaissance & Service Discovery Tool
@@ -45,7 +45,7 @@ PortScanner/
 ├── README.md           # Dokümantasyon
 └── .gitignore          # Git tarafından izlenmeyecek dosyalar
 ⚙️ <a name="installation"></a>KurulumProjeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:Bash# 1. Repoyu klonlayın
-git clone [https://github.com/yarennaksuu/PortScanner.git](https://github.com/yarennaksuu/PortScanner.git)
+git clone https://github.com/yarennaksuu/PortScanner.git
 
 # 2. Proje dizinine geçiş yapın
 cd PortScanner
