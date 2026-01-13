@@ -64,10 +64,10 @@ komut satırı argümanları ile yönetilir.
 ```text
 
 Sözdizimi: Bashpython Scanner.py -t <HEDEF_IP>
-Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi veya Hostname
+
 ```
 
-✅Örnek SenaryoBir hedef üzerindeki servisleri ve versiyonları tespit etmek için:   Bashpython Scanner.py -t scanme.nmap.org
+✅Örnek Senaryo: Bir hedef üzerindeki servisleri ve versiyonları tespit etmek için:   python Scanner.py -t scanme.nmap.org
 ```text
 Beklenen Çıktı:Plaintext------------------------------------------------------------
 [*] Scanning Target: 45.33.32.156
