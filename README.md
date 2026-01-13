@@ -1,81 +1,72 @@
-Advanced Port Scanner with Banner Grabbing
-Bu proje, Python kullanılarak geliştirilmiş, yüksek performanslı ve çok iş parçacıklı (multi-threaded) bir ağ port tarayıcısıdır. Hedef sistem üzerindeki açık portları tespit eder, çalışan servislerin isimlerini çözümler ve mümkünse servis versiyon bilgilerini (Banner Grabbing) yakalar.
+<div align="center">
 
-🚀 Özellikler
-Çok İş Parçacıklı Tarama (Multi-threading): concurrent.futures kullanılarak aynı anda 100 thread ile hızlı tarama yapar.
+# PortScanner 🛡️
+### Network Reconnaissance & Service Discovery Tool
 
-Banner Grabbing: Açık portlara bağlanarak çalışan servisin sürüm ve başlık bilgilerini çeker.
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat&logo=python)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey?style=flat)
+![Type](https://img.shields.io/badge/type-Reconnaissance-red?style=flat)
 
-Servis Tanımlama: Port numarasına göre standart servis isimlerini (HTTP, SSH, FTP vb.) tanımlar.
+<p align="center">
+  <a href="#about">Proje Hakkında</a> •
+  <a href="#features">Özellikler</a> •
+  <a href="#installation">Kurulum</a> •
+  <a href="#usage">Kullanım</a> •
+  <a href="#disclaimer">Yasal Uyarı</a>
+</p>
 
-Renkli Çıktı: colorama kütüphanesi ile sonuçları okunabilir ve renkli bir formatta sunar.
+</div>
 
-CLI Desteği: Komut satırı argümanları ile kolay kullanım sağlar.
+---
 
-Hata Yönetimi: Bağlantı zaman aşımı ve soket hatalarını yöneterek taramanın kesilmesini engeller.
+## 📌 <a name="about"></a>Proje Hakkında
 
-📋 Gereksinimler
-Bu projeyi çalıştırmak için bilgisayarınızda Python 3.x yüklü olmalıdır. Ayrıca renklendirme için colorama kütüphanesine ihtiyaç duyar.
+**PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
 
-Bash
+Geleneksel soket programlamanın limitlerini aşmak için **Multi-Threading (Çoklu İş Parçacığı)** mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
 
-pip install colorama
-cd 🛠️ Kurulum
-Projeyi yerel makinenize klonlayın:
+## 🚀 <a name="features"></a>Temel Özellikler
 
-Bash
+* **Eşzamanlı Tarama Motoru:** `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu.
+* **Servis Parmak İzi:** Açık portlarda çalışan servislerin versiyon tespiti.
+* **Düşük Yanlış Pozitif:** Optimize edilmiş soket zaman aşımı yönetimi.
+* **Platform Bağımsız:** Windows, Linux ve macOS üzerinde çalışır.
+* **Renkli Arayüz:** `Colorama` ile okunabilir terminal çıktıları.
 
-git clone https://github.com/kullaniciadi/port-scanner.git
-cd port-scanner
-Gerekli kütüphaneyi yükleyin:
+## 📂 Proje Yapısı
 
-Bash
+```text
+PortScanner/
+├── Scanner.py          # Ana tarama motoru
+├── requirements.txt    # Kütüphaneler
+├── README.md           # Dokümantasyon
+└── .gitignore          # Git ayarları
+```
+⚙️ <a name="installation"></a>Kurulum
+Projeyi kurmak için şu adımları izleyin:
+```text
+Bash# 1. Repoyu klonlayın
+git clone [https://github.com/yarennaksuu/PortScanner.git](https://github.com/yarennaksuu/PortScanner.git)
 
+# 2. Klasöre girin
+cd PortScanner
+
+# 3. Kütüphaneyi yükleyin
 pip install -r requirements.txt
-# Veya manuel olarak:
-pip install colorama
-💻 Kullanım
-Programı terminal veya komut satırı üzerinden aşağıdaki formatta çalıştırabilirsiniz:
-
-Temel Kullanım:
-
-Bash
-
-python Scanner.py -t <HEDEF_IP>
-Örnek:
-
-Bash
-
-python Scanner.py -t 192.168.1.10
-📸 Örnek Çıktı
-Program çalıştığında aşağıdaki gibi bir çıktı üretecektir:
-
-Plaintext
-
-------------------------------------------------------------
-[*] Scanning Target: 192.168.1.10
+```
+💻 <a name="usage"></a>Kullanım
+```text
+Taramayı başlatmak için -t parametresini kullanın.Komut:Bashpython Scanner.py -t <HEDEF_IP>
+Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi✅Örnek SenaryoBashpython Scanner.py -t scanme.nmap.org
+Beklenen Çıktı:Plaintext------------------------------------------------------------
+[*] Scanning Target: 45.33.32.156
 [*] Scanning ports 1-1000 with 100 threads...
-[*] Start Time: 2023-10-27 14:30:00.123456
 ------------------------------------------------------------
-[+] Port 21    (ftp) OPEN : vsFTPd 3.0.3
-[+] Port 22    (ssh) OPEN : SSH-2.0-OpenSSH_8.2p1
-[+] Port 80    (http) OPEN : Apache/2.4.41 (Ubuntu)
-[+] Port 443   (https) is OPEN
+[+] Port 22    (ssh) OPEN : SSH-2.0-OpenSSH_7.4
+[+] Port 80    (http) is OPEN
 ------------------------------------------------------------
-[*] Scan Completed: 2023-10-27 14:30:05.654321
-⚠️ Yasal Uyarı (Disclaimer)
-Bu araç yalnızca eğitim amaçlı ve yasal izinlere sahip olduğunuz ağlarda güvenlik testi yapmak üzere tasarlanmıştır. Sahibi olmadığınız veya test izniniz olmayan sistemlerde kullanılması yasa dışıdır. Geliştirici, bu aracın kötüye kullanımından doğacak hiçbir sorumluluğu kabul etmez.
-
-🤝 Katkıda Bulunma
-Bu depoyu Fork'layın.
-
-Yeni bir özellik dalı oluşturun (git checkout -b feature/YeniOzellik).
-
-Değişikliklerinizi commit edin (git commit -m 'Yeni özellik eklendi').
-
-Dalınızı Push edin (git push origin feature/YeniOzellik).
-
-Bir Pull Request oluşturun.
-
-📝 Lisans
-Bu proje MIT Lisansı altında lisanslanmıştır.
+```
+⚠️ <a name="disclaimer"></a>Yasal Uyarı
+Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir. İzinsiz tarama yapmak suç teşkil edebilir. Geliştirici, kötü niyetli kullanımlardan sorumlu değildir.
+<div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
