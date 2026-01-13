@@ -43,7 +43,7 @@ PortScanner/
 ├── README.md           # Dokümantasyon
 └── .gitignore          # Git ayarları
 ```
-⚙️ <a name="installation"></a>Kurulum
+## ⚙️ <a name="installation"></a>Kurulum
 Projeyi kurmak için şu adımları izleyin:
 ```text
 Bash# 1. Repoyu klonlayın
@@ -55,11 +55,19 @@ cd PortScanner
 # 3. Kütüphaneyi yükleyin
 pip install -r requirements.txt
 ```
-💻 <a name="usage"></a>Kullanım
+## 💻 <a name="usage"></a>Kullanım
+
+Taramayı başlatmak için -t parametresini kullanın.Komut:
 ```text
-Taramayı başlatmak için -t parametresini kullanın.Komut:Bashpython Scanner.py -t <HEDEF_IP>
-Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi✅Örnek SenaryoBashpython Scanner.py -t scanme.nmap.org
-Beklenen Çıktı:Plaintext------------------------------------------------------------
+Bashpython Scanner.py -t <HEDEF_IP>
+```
+✅Örnek Senaryo: 
+```text
+python Scanner.py -t scanme.nmap.org
+```
+Beklenen Çıktı:
+```text
+Plaintext------------------------------------------------------------
 [*] Scanning Target: 45.33.32.156
 [*] Scanning ports 1-1000 with 100 threads...
 ------------------------------------------------------------
@@ -67,6 +75,7 @@ Beklenen Çıktı:Plaintext-----------------------------------------------------
 [+] Port 80    (http) is OPEN
 ------------------------------------------------------------
 ```
-⚠️ <a name="disclaimer"></a>Yasal Uyarı
+## ⚠️ <a name="disclaimer"></a>Yasal Uyarı
 Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir. İzinsiz tarama yapmak suç teşkil edebilir. Geliştirici, kötü niyetli kullanımlardan sorumlu değildir.
+
 <div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
