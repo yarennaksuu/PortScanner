@@ -27,20 +27,28 @@
 Ayrıca içerdiği **Banner Grabbing** (Servis Bilgisi Toplama) özelliği sayesinde, açık portlarda çalışan servislerin versiyon bilgilerini (örneğin: SSH versiyonu, Apache sunucu bilgisi vb.) otomatik olarak tespit eder. Bu özellik, sızma testlerinin keşif (reconnaissance) aşamasında kritik öneme sahiptir.
 
 ## 🚀 Özellikler
+
 ⚡ Yüksek Hız: Concurrent.futures kullanarak çoklu iş parçacığı (multi-threading) ile saniyeler içinde binlerce portu tarar.
+
 🔍 Akıllı Hedef Çözümleme: Domain adreslerini (örn: google.com) otomatik olarak IP adresine çevirir ve tarar. CIDR desteği (örn: 192.168.1.0/24) mevcuttur.
+
 🛡️ WAF Tespiti: Hedef sistemde Cloudflare, ModSecurity gibi Güvenlik Duvarı (WAF) olup olmadığını analiz eder.
+
 🔒 Gelişmiş SSL/TLS Analizi:
 SNI (Server Name Indication) desteği ile sanal hostları doğru analiz eder.
 Sertifika otoritesini (Issuer) ve geçerlilik süresini (Expiry Date) UTC uyumlu olarak hesaplar.
 Güvensiz/Self-Signed sertifikaları tespit eder.
+
 🐛 Zafiyet Modülleri (Mini-NSE):
 FTP: Anonim giriş (Anonymous Login) kontrolü.
 HTTP: robots.txt dosyası üzerinden bilgi ifşası (Information Disclosure) kontrolü.
 SMTP: VRFY komutu ile kullanıcı numaralandırma (User Enumeration) açığı kontrolü.
 Banner Grabbing: Servis versiyonlarını ve işletim sistemi ipuçlarını yakalar.
+
 📊 Raporlama: Sonuçları detaylı bir JSON dosyasına kaydeder.
+
 🎨 Kullanıcı Deneyimi: Renkli terminal çıktıları (colorama) ve ilerleme çubuğu (tqdm).
+
 ## 📂 Proje Yapısı
 
 ```text
