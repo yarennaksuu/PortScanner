@@ -57,7 +57,7 @@ cd PortScanner
 
 # 3. Gerekli kütüphaneleri yükleyin
 pip install -r requirements.txt
-💻 <a name="usage"></a>Kullanım
+##💻 <a name="usage"></a>Kullanım
 PortScanner, komut satırı argümanları ile yönetilir.
 
 Sözdizimi:
@@ -87,7 +87,7 @@ Plaintext
 [+] Port 9929  (nping-echo) is OPEN
 ------------------------------------------------------------
 [*] Scan Completed: 2026-01-13 16:45:22
-⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)
+##⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)
 Lütfen Dikkatle Okuyunuz:
 
 Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
