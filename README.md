@@ -75,6 +75,12 @@ Plaintext------------------------------------------------------------
 ------------------------------------------------------------
 ```
 ## ⚠️ <a name="disclaimer"></a>Yasal Uyarı
-Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir. İzinsiz tarama yapmak suç teşkil edebilir. Geliştirici, kötü niyetli kullanımlardan sorumlu değildir.
+Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
+
+İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.
+
+Geliştirici, bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.
+
+Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.
 
 <div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
