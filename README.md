@@ -1,4 +1,26 @@
-Proje Hakkında
+<div align="center">
+
+# PortScanner 🛡️
+### Network Reconnaissance & Service Discovery Tool
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat&logo=python)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey?style=flat)
+![Type](https://img.shields.io/badge/type-Reconnaissance-red?style=flat)
+
+<p align="center">
+  <a href="#about">Proje Hakkında</a> •
+  <a href="#features">Özellikler</a> •
+  <a href="#installation">Kurulum</a> •
+  <a href="#usage">Kullanım</a> •
+  <a href="#disclaimer">Yasal Uyarı</a>
+</p>
+
+</div>
+
+---
+
+## 📌 <a name="about"></a>Proje Hakkında
 
 **PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
 
@@ -12,7 +34,17 @@ Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightw
 * **Servis Parmak İzi (Service Fingerprinting):** Açık portlarda çalışan servislerin (SSH, FTP, HTTP vb.) "Banner" bilgilerini yakalayarak versiyon tespiti yapar.
 * **Düşük Yanlış Pozitif (Low False Positive):** Ağ gecikmelerini ve zaman aşımlarını (timeouts) dinamik olarak yöneten soket yapılandırması.
 * **Platform Bağımsız:** Python 3.x yüklü olan tüm işletim sistemlerinde (Windows, Linux, macOS) ek yetki gerektirmeden çalışır.
-Kurulum
+* **Renkli CLI Arayüzü:** `Colorama` entegrasyonu ile analiz edilmesi kolay, renk kodlu terminal çıktıları.
+
+## 📂 Proje Yapısı
+
+```text
+PortScanner/
+├── Scanner.py          # Ana tarama motoru ve iş mantığı
+├── requirements.txt    # Proje bağımlılıkları
+├── README.md           # Dokümantasyon
+└── .gitignore          # Git tarafından izlenmeyecek dosyalar
+⚙️ <a name="installation"></a>Kurulum
 Projeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:
 
 Bash
