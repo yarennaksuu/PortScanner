@@ -44,31 +44,16 @@ PortScanner/
 ├── requirements.txt    # Proje bağımlılıkları
 ├── README.md           # Dokümantasyon
 └── .gitignore          # Git tarafından izlenmeyecek dosyalar
-```
-##⚙️ <a name="installation"></a>Kurulum
-Projeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:
-```text
-
-# 1. Repoyu klonlayın
-git clone https://github.com/yarennaksuu/PortScanner.git
+⚙️ <a name="installation"></a>KurulumProjeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:Bash# 1. Repoyu klonlayın
+git clone [https://github.com/yarennaksuu/PortScanner.git](https://github.com/yarennaksuu/PortScanner.git)
 
 # 2. Proje dizinine geçiş yapın
 cd PortScanner
 
 # 3. Gerekli kütüphaneleri yükleyin
 pip install -r requirements.txt
-```
-##💻 <a name="usage"></a>KullanımPortScanner
-
-komut satırı argümanları ile yönetilir.
-```text
-
-Sözdizimi: Bashpython Scanner.py -t <HEDEF_IP>
-
-```
-
-✅Örnek Senaryo: Bir hedef üzerindeki servisleri ve versiyonları tespit etmek için:   python Scanner.py -t scanme.nmap.org
-```text
+💻 <a name="usage"></a>KullanımPortScanner, komut satırı argümanları ile yönetilir.Sözdizimi:Bashpython Scanner.py -t <HEDEF_IP>
+Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi veya Hostname✅Örnek SenaryoBir hedef üzerindeki servisleri ve versiyonları tespit etmek için:Bashpython Scanner.py -t scanme.nmap.org
 Beklenen Çıktı:Plaintext------------------------------------------------------------
 [*] Scanning Target: 45.33.32.156
 [*] Scanning ports 1-1000 with 100 threads...
@@ -79,23 +64,4 @@ Beklenen Çıktı:Plaintext-----------------------------------------------------
 [+] Port 9929  (nping-echo) is OPEN
 ------------------------------------------------------------
 [*] Scan Completed: 2026-01-13 16:45:22
-```
-⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)
-Lütfen Dikkatle Okuyunuz:
-
-Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.
-
-İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.
-
-Geliştirici (Yaren Aksu), bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.
-
-Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.
-
-<div align="center">
-
-Geliştirici: Yaren Aksu
-
-
-Cybersecurity Researcher & Developer
-
-</div>
+⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)Lütfen Dikkatle Okuyunuz:Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.Geliştirici, bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.<div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
