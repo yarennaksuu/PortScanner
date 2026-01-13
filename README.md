@@ -57,6 +57,8 @@ cd PortScanner
 
 # 3. Gerekli kütüphaneleri yükleyin
 pip install -r requirements.txt
+
+text```
 ##💻 <a name="usage"></a>Kullanım
 PortScanner, komut satırı argümanları ile yönetilir.
 
@@ -100,7 +102,7 @@ Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılı
 
 <div align="center">
 
-Geliştirici: Yaren Naksu
+Geliştirici: Yaren Naksu 
 
 Cybersecurity Researcher & Developer
 
