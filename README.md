@@ -1,46 +1,92 @@
-\# 🛡️ PyScanner - Multi-Threaded Port Tarayıcı
+<div align="center">
 
 
 
-!\[Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge\&logo=python)
+\# PortScanner 🛡️
 
-!\[License](https://img.shields.io/badge/Lisans-MIT-green?style=for-the-badge)
-
-!\[Durum](https://img.shields.io/badge/Durum-Aktif-green.svg?style=for-the-badge)
+\### Network Reconnaissance \& Service Discovery Tool
 
 
 
-\## 📌 Proje Hakkında
+!\[Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat\&logo=python)
 
-\*\*PyScanner\*\*, siber güvenlik uzmanları ve sistem yöneticileri için geliştirilmiş; hafif, hızlı ve çok iş parçacıklı (multi-threaded) bir ağ tarama aracıdır. Standart tek iş parçacıklı tarayıcıların aksine, PyScanner \*\*Python'un eşzamanlılık (concurrency)\*\* yeteneklerini kullanarak yaygın portları saniyeler içinde tarar.
+!\[License](https://img.shields.io/badge/license-MIT-green?style=flat)
 
+!\[Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey?style=flat)
 
-
-Ayrıca içerdiği \*\*Banner Grabbing\*\* (Servis Bilgisi Toplama) özelliği sayesinde, açık portlarda çalışan servislerin versiyon bilgilerini (örneğin: SSH versiyonu, Apache sunucu bilgisi vb.) otomatik olarak tespit eder. Bu özellik, sızma testlerinin keşif (reconnaissance) aşamasında kritik öneme sahiptir.
-
-
-
-\## 🚀 Özellikler
-
-\* \*\*Yüksek Hız (Multi-Threading):\*\* 100 eşzamanlı iş parçacığı (thread) kullanarak 1000 portu yaklaşık 10 saniyede tarar.
-
-\* \*\*Banner Grabbing:\*\* Açık portlardaki servislerin versiyon bilgilerini ve karşılama mesajlarını yakalar.
-
-\* \*\*Akıllı Zaman Aşımı:\*\* Filtrelenmiş veya cevap vermeyen portlarda vakit kaybetmemek için optimize edilmiş soket yönetimi.
-
-\* \*\*Renkli Arayüz:\*\* Sonuçları analiz etmeyi kolaylaştıran, okunaklı ve renkli komut satırı çıktıları.
-
-\* \*\*Bağımlılıksız:\*\* Çalışmak için ağır kütüphanelere ihtiyaç duymaz.
+!\[Type](https://img.shields.io/badge/type-Reconnaissance-red?style=flat)
 
 
 
-\## ⚙️ Kurulum
+<p align="center">
+
+&nbsp; <a href="#about">Proje Hakkında</a> •
+
+&nbsp; <a href="#features">Özellikler</a> •
+
+&nbsp; <a href="#installation">Kurulum</a> •
+
+&nbsp; <a href="#usage">Kullanım</a> •
+
+&nbsp; <a href="#disclaimer">Yasal Uyarı</a>
+
+</p>
 
 
 
-1\. Repoyu klonlayın:
+</div>
 
-&nbsp;  ```bash
 
-&nbsp;  git clone \[https://github.com/yarennaksuu/PyScanner.git](https://github.com/yarennaksuu/PyScanner.git)
+
+---
+
+
+
+\## 📌 <a name="about"></a>Proje Hakkında
+
+
+
+\*\*PortScanner\*\*, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
+
+
+
+Geleneksel soket programlamanın limitlerini aşmak için \*\*Multi-Threading (Çoklu İş Parçacığı)\*\* mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
+
+
+
+Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightweight) çözümlerin gerektiği kısıtlı ortamlarda (Pivot noktaları, Docker konteynerleri vb.) hızlı keşif yapmak amacıyla geliştirilmiştir.
+
+
+
+\## 🚀 <a name="features"></a>Temel Özellikler
+
+
+
+\* \*\*Eşzamanlı Tarama Motoru (Concurrency):\*\* `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu (ThreadPool) yönetimi.
+
+\* \*\*Servis Parmak İzi (Service Fingerprinting):\*\* Açık portlarda çalışan servislerin (SSH, FTP, HTTP vb.) "Banner" bilgilerini yakalayarak versiyon tespiti yapar.
+
+\* \*\*Düşük Yanlış Pozitif (Low False Positive):\*\* Ağ gecikmelerini ve zaman aşımlarını (timeouts) dinamik olarak yöneten soket yapılandırması.
+
+\* \*\*Platform Bağımsız:\*\* Python 3.x yüklü olan tüm işletim sistemlerinde (Windows, Linux, macOS) ek yetki gerektirmeden çalışır.
+
+\* \*\*Renkli CLI Arayüzü:\*\* `Colorama` entegrasyonu ile analiz edilmesi kolay, renk kodlu terminal çıktıları.
+
+
+
+\## 📂 Proje Yapısı
+
+
+
+```text
+
+PortScanner/
+
+├── Scanner.py          # Ana tarama motoru ve iş mantığı
+
+├── requirements.txt    # Proje bağımlılıkları
+
+├── README.md           # Dokümantasyon
+
+└── .gitignore          # Git tarafından izlenmeyecek dosyalar
 
