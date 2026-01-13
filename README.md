@@ -1,67 +1,47 @@
-Gönderdiğin ekran görüntülerini inceledim. Sorunu ve nedenini hemen tespit ettim.Teşhis: "Proje Yapısı" başlığının altındaki kod bloğunu kapatmamışsın.Ekran görüntüsünde her şeyin (Kurulum, Kullanım, Yasal Uyarı) gri bir kutu içinde ve kod formatında görünmesinin sebebi bu. GitHub, "Proje Yapısı"ndan sonra gelen her şeyi kodun bir parçası sanıyor. O yüzden başlıklar kalınlaşmıyor, tablolar bozuluyor ve HTML kodları (<a name...) olduğu gibi görünüyor.🛠️ Çözüm: Temiz Başlangıç (Copy-Paste)Lütfen README.md dosyanın içindeki her şeyi sil. Aşağıdaki kodu baştan sona kopyala ve yapıştır. Bu kodda tüm "kapatma tırnakları" (```) olması gerektiği yerde.Markdown<div align="center">
-
-# PortScanner 🛡️
-### Network Reconnaissance & Service Discovery Tool
-
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat&logo=python)
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey?style=flat)
 ![Type](https://img.shields.io/badge/type-Reconnaissance-red?style=flat)
 
-<p align="center">
-  <a href="#about">Proje Hakkında</a> •
-  <a href="#features">Özellikler</a> •
-  <a href="#installation">Kurulum</a> •
-  <a href="#usage">Kullanım</a> •
-  <a href="#disclaimer">Yasal Uyarı</a>
-</p>
-
-</div>
-
 ---
 
-## 📌 <a name="about"></a>Proje Hakkında
+## 📌 Proje Hakkında
 
 **PortScanner**, sızma testlerinin (Penetration Testing) keşif aşamasında kullanılmak üzere tasarlanmış, yüksek performanslı ve asenkron mimariye sahip bir ağ tarama aracıdır.
 
 Geleneksel soket programlamanın limitlerini aşmak için **Multi-Threading (Çoklu İş Parçacığı)** mimarisini kullanır. Bu sayede, TCP el sıkışma (3-way handshake) süreçlerini paralelize ederek hedef sistem üzerindeki açık portları ve çalışan servis versiyonlarını (Banner Grabbing) saniyeler içerisinde tespit eder.
 
-Bu proje, Nmap gibi kapsamlı araçların bulunmadığı veya daha hafif (lightweight) çözümlerin gerektiği kısıtlı ortamlarda (Pivot noktaları, Docker konteynerleri vb.) hızlı keşif yapmak amacıyla geliştirilmiştir.
+## 🚀 Temel Özellikler
 
-## 🚀 <a name="features"></a>Temel Özellikler
-
-* **Eşzamanlı Tarama Motoru (Concurrency):** `concurrent.futures` kütüphanesi ile optimize edilmiş Thread Havuzu (ThreadPool) yönetimi.
-* **Servis Parmak İzi (Service Fingerprinting):** Açık portlarda çalışan servislerin (SSH, FTP, HTTP vb.) "Banner" bilgilerini yakalayarak versiyon tespiti yapar.
-* **Düşük Yanlış Pozitif (Low False Positive):** Ağ gecikmelerini ve zaman aşımlarını (timeouts) dinamik olarak yöneten soket yapılandırması.
-* **Platform Bağımsız:** Python 3.x yüklü olan tüm işletim sistemlerinde (Windows, Linux, macOS) ek yetki gerektirmeden çalışır.
-* **Renkli CLI Arayüzü:** `Colorama` entegrasyonu ile analiz edilmesi kolay, renk kodlu terminal çıktıları.
+* **Eşzamanlı Tarama Motoru:** `concurrent.futures` ile optimize edilmiş Thread Havuzu.
+* **Servis Parmak İzi:** Açık portlarda çalışan servislerin versiyon tespiti.
+* **Düşük Yanlış Pozitif:** Optimize edilmiş soket zaman aşımı yönetimi.
+* **Platform Bağımsız:** Windows, Linux ve macOS üzerinde çalışır.
+* **Renkli Arayüz:** `Colorama` ile okunabilir terminal çıktıları.
 
 ## 📂 Proje Yapısı
 
 ```text
 PortScanner/
-├── Scanner.py          # Ana tarama motoru ve iş mantığı
-├── requirements.txt    # Proje bağımlılıkları
+├── Scanner.py          # Ana tarama motoru
+├── requirements.txt    # Kütüphaneler
 ├── README.md           # Dokümantasyon
-└── .gitignore          # Git tarafından izlenmeyecek dosyalar
-⚙️ <a name="installation"></a>KurulumProjeyi yerel ortamınıza klonlamak ve bağımlılıkları yüklemek için aşağıdaki adımları izleyin:Bash# 1. Repoyu klonlayın
-git clone https://github.com/yarennaksuu/PortScanner.git
+└── .gitignore          # Git ayarları
+⚙️ KurulumProjeyi kurmak için şu adımları izleyin:Bash# 1. Repoyu klonlayın
+git clone [https://github.com/yarennaksuu/PortScanner.git](https://github.com/yarennaksuu/PortScanner.git)
 
-# 2. Proje dizinine geçiş yapın
+# 2. Klasöre girin
 cd PortScanner
 
-# 3. Gerekli kütüphaneleri yükleyin
+# 3. Kütüphaneyi yükleyin
 pip install -r requirements.txt
-💻 <a name="usage"></a>KullanımPortScanner, komut satırı argümanları ile yönetilir.Sözdizimi:Bashpython Scanner.py -t <HEDEF_IP>
-Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi veya Hostname✅Örnek SenaryoBir hedef üzerindeki servisleri ve versiyonları tespit etmek için:Bashpython Scanner.py -t scanme.nmap.org
+💻 KullanımTaramayı başlatmak için -t parametresini kullanın.Komut:Bashpython Scanner.py -t <HEDEF_IP>
+Parametreler:ArgümanAçıklamaZorunlu-t, --targetTaranacak Hedef IP Adresi✅Örnek SenaryoBashpython Scanner.py -t scanme.nmap.org
 Beklenen Çıktı:Plaintext------------------------------------------------------------
 [*] Scanning Target: 45.33.32.156
 [*] Scanning ports 1-1000 with 100 threads...
-[*] Start Time: 2026-01-13 16:45:12
 ------------------------------------------------------------
 [+] Port 22    (ssh) OPEN : SSH-2.0-OpenSSH_7.4
 [+] Port 80    (http) is OPEN
-[+] Port 9929  (nping-echo) is OPEN
 ------------------------------------------------------------
-[*] Scan Completed: 2026-01-13 16:45:22
-⚠️ <a name="disclaimer"></a>Yasal Uyarı (Disclaimer)Lütfen Dikkatle Okuyunuz:Bu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir.İzniniz olmayan bir ağa veya sisteme tarama yapmak, 5237 Sayılı Türk Ceza Kanunu (TCK) Bilişim Suçları maddeleri ve uluslararası yasalar uyarınca suç teşkil edebilir.Geliştirici, bu aracın kötü niyetli kullanımından doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.Bu aracı indirerek ve kullanarak, tüm yasal sorumluluğu kabul etmiş sayılırsınız.<div align="center">Geliştirici: Yaren AksuCybersecurity Researcher & Developer</div>
+⚠️ Yasal UyarıBu yazılım yalnızca eğitim amaçlı ve yasal izinlerin alındığı ağlarda güvenlik testleri gerçekleştirmek amacıyla geliştirilmiştir. İzinsiz tarama yapmak suç teşkil edebilir. Geliştirici, kötü niyetli kullanımlardan sorumlu değildir.Geliştirici: Yaren AksuCybersecurity Researcher & Developer
